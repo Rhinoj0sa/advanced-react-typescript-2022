@@ -1,16 +1,29 @@
-import { FC } from 'react';
-import { LabeledInput } from '../components';
+import { FC } from "react";
+import { LabeledInput } from "../components";
+// this way we can infer the type of the config object and its properties without having to define them explicitly
 
-function getConfigItem(section: string, item: string) {
-  const config: any = {
+function getConfigItem<
+  TSection extends keyof typeof config,
+  TItem extends keyof (typeof config)[TSection]
+>(section: TSection, item: TItem) {
+  const config = {
     user: {
-      firstName: 'John',
+      firstName: "John",
+      lastName: "Doe",
       birthDate: new Date(1990, 6, 10),
     },
     address: {
-      street: 'Main St',
+      street: "Main St",
       houseNumber: 123,
-      city: 'New York',
+      city: "New York",
+    },
+    employer: {
+      name: "Acme Inc.",
+      address: {
+        street: "Broadway",
+        houseNumber: 456,
+        city: "New York",
+      },
     },
   };
 
@@ -18,15 +31,15 @@ function getConfigItem(section: string, item: string) {
 }
 
 export const Configuration: FC = () => {
-  const firstName = getConfigItem('user', 'firstName');
-  const lastName = getConfigItem('user', 'lastName');
-  const birthDate = getConfigItem('user', 'birthDate');
+  const firstName = getConfigItem("user", "firstName");
+  const lastName = getConfigItem("user", "lastName");
+  const birthDate = getConfigItem("user", "birthDate").toLocaleString();
 
   const employer = getConfigItem('employer', 'name');
 
-  const street = getConfigItem('address', 'street');
-  const houseNumber = getConfigItem('address', 'houseNumber');
-  const city = getConfigItem('address', 'city').toUpperCase();
+  const street = getConfigItem("address", "street");
+  const houseNumber = getConfigItem("address", "houseNumber");
+  const city = getConfigItem("address", "city").toUpperCase();
 
   return (
     <div>
