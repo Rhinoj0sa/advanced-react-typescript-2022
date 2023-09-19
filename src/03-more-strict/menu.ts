@@ -49,11 +49,15 @@ export const extraIngredients: ExtraIngredients = {
   pepperoni: { name: 'Pepperoni', price: 0.75 },
   tomatoes: { name: 'Tomatoes', price: 0.5 },
   olives: { name: 'Olives', price: 0.6 },
-  mushroms: { name: 'Mushrooms', price: 0.6 },
+  mushrooms: { name: 'Mushrooms', price: 0.6 },
 };
-
+// there are looking for "mushrooms" but the key was "mushroms"
 export const getExtraIngredient = (name: string): ExtraIngredient => {
-  const extraIngredient = extraIngredients[name];
-
+  const extraIngredient = extraIngredients[name] //?? {name, price: 0}
+  if (!extraIngredient) {
+    // throw new Error(`Extra ingredient ${name} not found`);
+    console.warn(`Extra ingredient ${name} not found`);
+    return { name, price: 0 };
+  }
   return extraIngredient;
 };
