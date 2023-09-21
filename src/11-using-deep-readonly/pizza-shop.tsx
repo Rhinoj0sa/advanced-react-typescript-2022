@@ -17,16 +17,16 @@ export const PizzaShop: FC = () => {
     );
     console.log('Extras for a Euro', extrasForAEuro);
 
-    pizzas.push({
-      name: `New Pizza ${new Date().toLocaleTimeString()}`,
-      price: 10,
-      extras: ['cheese'],
-      ingredients: ['tomato sauce'],
-    });
+    // pizzas.push({
+    //   name: `New Pizza ${new Date().toLocaleTimeString()}`,
+    //   price: 10,
+    //   extras: ['cheese'],
+    //   ingredients: ['tomato sauce'],
+    // });
 
-    if (pizzas[0]) {
-      pizzas[0].price *= 10;
-    }
+    // if (pizzas[0]) {
+    //   pizzas[0].price *= 10;
+    // }
 
     setOrder([]);
   };
