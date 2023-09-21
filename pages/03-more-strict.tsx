@@ -12,7 +12,7 @@ const MoreStrict: NextPage = () => {
 };
 
 export default MoreStrict;
-
-const data=[1,2]
-const item = data[12] // error
-console.log(item)
+//
+// const data=[1,2]
+// const item = data[12] // error
+// console.log(item)

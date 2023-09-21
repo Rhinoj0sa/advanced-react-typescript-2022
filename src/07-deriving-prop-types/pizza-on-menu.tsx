@@ -50,6 +50,9 @@ export const PizzaOnMenu: FC<Props> = ({
                   }
                 });
               }}
+              disabled={extra==='mushrooms'}
+              id={`${pizza.name}-${extra}`}
+
             >
               <span className="text-capitalize">{extra}</span>
             </LabeledCheckbox>
